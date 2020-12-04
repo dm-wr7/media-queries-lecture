@@ -1,38 +1,126 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
-  text-align: center;
+  padding-top: 10vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  display: flex;
+  width: 100vw;
+  height: 10vh;
+  background-color: mediumslateblue;
+  align-items: center;
+  padding: 5px 15px;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nav-bar {
+  display: flex;
+  height: 100%;
+  align-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav-item {
+  margin-left: 10px;
+  font-size: 1.2rem;
+}
+
+.hamburger {
+  height: 80%;
+  display: none;
+}
+
+.mobile-nav {
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: flex-end;
+  background-color: rebeccapurple;
+  height: 15vh;
+  justify-content: space-evenly;
+  padding: 15px;
+  overflow: hidden;
+  opacity: 100;
+  transition: all 500ms;
+  z-index: 5;
 }
 
-.App-link {
-  color: #61dafb;
+.mobile-nav-hide {
+  height: 0;
+  padding: 0;
+  opacity: 0;
 }
 
-@keyframes App-logo-spin {
+.red-box {
+  background-color: red;
+  width: 250px;
+  height: 250px;
+  position: relative;
+  z-index: 0;
+}
+
+.red-box-animate {
+  animation: color-change 2.5s, rotate 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@media (max-width: 900px) {
+  .header {
+    background-color: tomato;
+  }
+}
+
+@media (min-width: 1200px) {
+  .header {
+    background-color: olivedrab;
+  }
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 16px;
+  }
+
+  .nav-bar {
+    display: none;
+  }
+
+  .hamburger {
+    display: inline-block;
+  }
+}
+
+@keyframes rotate {
   from {
-    transform: rotate(0deg);
+    transform: rotate(0deg) scale(1);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(360deg) scale(0.5);
+  }
+}
+
+@keyframes color-change {
+  0% {
+    z-index: 0;
+    background-color: darkblue;
+  }
+
+  50% {
+    z-index: -1;
+    background-color: magenta;
+  }
+
+  100% {
+    background-color: darkblue;
   }
 }
